@@ -1,0 +1,41 @@
+
+/*
+array values are stock prices, what is the max profit possible for buying on a day and then selling on a day?
+
+
+[5,4,8,2,9]
+ min = 0
+ max = 0
+ maxProfit = 0
+
+ [7,5,3,2,1,10]
+
+ [7,8,9,1,10]
+ 10 - 1 = 9
+
+
+ Input: [7, 6, 4, 3, 1]
+ Output: 0 
+ */
+
+
+func richestDay(array: [Int]) -> Int {
+    var min = array[0]
+    var max = array[0]
+    var maxProfit = 0
+    
+    for i in 1..<array.count {
+        let salePrice = array[i]
+        min = salePrice < min ? salePrice : min
+        if salePrice > max {
+            max = salePrice
+            let profit = max - min
+            maxProfit = profit > maxProfit ? profit : maxProfit
+        }
+    }
+    
+    return maxProfit
+}
+
+let test: [Int] = [2,2,2,2,2,2]
+print(richestDay(array: test))

@@ -1,0 +1,48 @@
+import Foundation
+
+/* 
+  "(as(ase(asds)123)df)"
+  "(as{ase[asds]123})df)"
+  "{([)]}"
+      i
+
+stack: {([
+  
+false
+ */
+
+ 
+
+func checkValidString(testString: String) -> Bool {
+  var stack: [Character] = []
+  let charArray: [Character] = Array(testString.characters)
+  let openBrackets: [Character] = ["{", "[", "("]
+  let closingBrackets: [Character] = ["}", "]", ")"]
+  
+  for i in 0 ..< charArray.count {
+    let char = charArray[i]
+    if openBrackets.contains(char) {
+      stack.append(char)
+    } else if closingBrackets.contains(char) {
+       if !stack.isEmpty {
+          let openBracket = stack.remove(at: stack.count - 1)
+          if (openBracket == "(" && char == ")") ||
+             (openBracket == "{" && char == "}") ||
+             (openBracket == "[" && char == "]")
+          {
+             continue
+          } else {
+             return false
+          }
+       } else {
+          return false
+       }
+    }
+  }
+  
+  return stack.isEmpty
+}
+
+var test = "[(as(ase(asds{)123)df)]"
+
+print(checkValidString(testString: test))

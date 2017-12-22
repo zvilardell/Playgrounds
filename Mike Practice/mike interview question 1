@@ -1,0 +1,43 @@
+import Foundation
+
+/* 
+Your previous Plain Text content is preserved below:
+1,1,1,1,1,0,0,0,0
+        j i
+
+
+1,1,1,1,1,0,0,0,0
+
+
+ */
+var test: [Int] = [1,0,1,0,0,0,0,1,1,1,1]
+var test2: [Int] = []
+var test3: [Int] = [0,0,0,0]
+
+
+func onesOnTheLeft(numberArray: inout [Int]) -> [Int] {
+
+  var i = 0
+  var j = numberArray.count - 1
+  //var answer: [Int] = numberArray
+  
+  while i < j {    
+    if numberArray[i] == 0 && numberArray[j] == 1 {
+      numberArray[i] = 1
+      numberArray[j] = 0
+    }
+    if numberArray[i] == 1 {
+      i += 1
+    }    
+    if numberArray[j] == 0 {
+      j -= 1
+    }
+  }
+  
+  return numberArray
+  
+}
+
+let answer = onesOnTheLeft(numberArray: &test)
+print(answer)
+
