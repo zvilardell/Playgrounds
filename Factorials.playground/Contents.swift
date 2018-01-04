@@ -4,17 +4,13 @@ import UIKit
 
 print("RECURSIVE")
 
+//returns num!
 func recursiveFactorial(_ num: Int) -> Int {
-    return recursiveFactorial(num, total: num)
-}
-
-//recursive helper function
-func recursiveFactorial(_ num: Int, total: Int) -> Int {
-    guard num > 1 else {
-        return total
+    guard num > 0 else {
+        //0! = 1
+        return 1
     }
-    print("num: \(num), total: \(total)")
-    return recursiveFactorial(num - 1, total: total * (num - 1))
+    return num * recursiveFactorial(num - 1)
 }
 
 print(recursiveFactorial(4))
@@ -27,19 +23,18 @@ print("NON-RECURSIVE")
 
 //returns num!
 func factorial(_ num: Int) -> Int {
-    guard num > 1 else {
-        return num
+    guard num > 0 else {
+        //0! = 1
+        return 1
     }
     
-    var total = num
-    var currentNum = num - 1
+    var product = 1
     
-    while currentNum > 1 {
-        total *= currentNum
-        currentNum -= 1
+    for i in 1...num {
+        product *= i
     }
     
-    return total
+    return product
 }
 
 print(factorial(5))
