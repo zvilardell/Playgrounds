@@ -5,16 +5,16 @@ import UIKit
 print("RECURSIVE")
 
 func recursiveFactorial(_ num: Int) -> Int {
-    return factorial(num, total: num)
+    return recursiveFactorial(num, total: num)
 }
 
 //recursive helper function
-func factorial(_ num: Int, total: Int) -> Int {
+func recursiveFactorial(_ num: Int, total: Int) -> Int {
     guard num > 1 else {
         return total
     }
     print("num: \(num), total: \(total)")
-    return factorial(num - 1, total: total * (num - 1))
+    return recursiveFactorial(num - 1, total: total * (num - 1))
 }
 
 print(recursiveFactorial(4))
