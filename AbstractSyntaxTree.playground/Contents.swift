@@ -30,12 +30,14 @@ class Node {
 
 //constructing AST for equation
 
+//value nodes (leaves)
 let twoNode = Node(value: 2)
 let threeNode = Node(value: 3)
 let fourNode = Node(value: 4)
 let fiveNode = Node(value: 5)
 let sixNode = Node(value: 6)
 
+//operator nodes
 let multiplicationNode = Node(operation: "*", left: threeNode, right: fourNode)
 let divisionNode = Node(operation: "/", left: multiplicationNode, right: twoNode)
 let subtractionNode = Node(operation: "-", left: sixNode, right: fiveNode)
